@@ -2,6 +2,7 @@ Jeff Henry's Bing Search Bot V1.0
 =============================
 
 Earns Rewards Points for Bing
+	
 	Last Modified: 5/19/2014
 	
 	This bot uses the selenium library to search for items using bing.
@@ -18,8 +19,8 @@ Earns Rewards Points for Bing
 	Edit email and password to individual login information.
 	
   V1.0
-========
-  - Initial Commit
-  - Successfully accumulates 15 points in a few minutes
-  - Prints out current point count
+  
+  	- Initial Commit
+  	- Successfully accumulates 15 points in a few minutes
+  	- Prints out current point count
 
