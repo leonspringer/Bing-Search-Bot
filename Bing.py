@@ -6,19 +6,20 @@
 	This bot uses the selenium library to search for items using bing.
 	Accumulates rewards points for bing rewards.
 	Web browsers can only get 15 points a day.
+	Opens in a firefox window, you can see it work there.
 	
 	How to use:
 		- Install selenium using pip 'pip install -U selenium'
 		- Register an email with live.com and with bing rewards prior to using the bot
-		- Run and enjoy the benefits 'python bing.py'
-		
-	Feel free to change the search_terms or add to the code.
-  
-	Edit email and password to appropriate login
+		- Run and enjoy the benefits
 
+	Edit email and password to appropriate login
+	
+	V1.1 Updates:
+	- Handles if current weekday is tuesday of may, which means more points!
 '''
 
-import os,sys,random,time
+import os,sys,random,time,datetime
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
@@ -28,6 +29,7 @@ search_terms = ["titanfall","xbox","videogame deals","how to","cars","exotic","m
 email = 'email'
 password = 'password'
 
+
 class account(object):
 	def __init__(self, email, password):
 		super(account, self).__init__()
@@ -35,12 +37,24 @@ class account(object):
 		self.password = password
 		self.current_points = 0
 		self.earned_points = 0
+		self.page_searches = 0
 		
 	def login(self):
+		#--- Determine max searches:
+		now = datetime.datetime.now()
+		if now.strftime('%A') == 'Tuesday' and now.strftime('%B') == 'May':
+			print 'Day of week: ',now.strftime('%A')
+			print 'Every Tuesday in May gets up to 30 searches rewarded.' 
+			max_searches = 70
+		else:
+			print 'Day of week: ',now.strftime('%A')
+			print 'Up to 15 searches rewarded today.'
+			max_searches = 40
+		
 		#--- Create instance of Firefox 
 		driver = webdriver.Firefox()
-		driver.set_window_size(10,10)
-		driver.set_window_position(-1000,-1000)
+		driver.set_window_size(300,300)
+		driver.set_window_position(-300,-300)
 		
 		#--- Open live.com to login
 		driver.get('http://www.live.com')
@@ -56,24 +70,24 @@ class account(object):
 		#--- Open Bing.com
 		driver.get("http://www.bing.com")
 		time.sleep(3)
+		assert 'Bing' in driver.title
 	
 		repeat = True
 		while(repeat):
+			#--- Print current point count
+			rewards = driver.find_element_by_id('id_rc')
+			print 'Current Points: ',rewards.text
+
 			#--- Find the search bar
 			searchbar = driver.find_element_by_id('sb_form_q')
+			
 			#--- Select everything in the search bar and delete it
 			searchbar.send_keys(Keys.CONTROL,'a')
 			searchbar.send_keys(Keys.DELETE)
 			time.sleep(3)
-			
-			#--- Find current points:
-			rewards = driver.find_element_by_id('id_rc')
-			if int(rewards.text) > self.current_points:
-				self.current_points = int(rewards.text)
-				self.earned_points += 1
-				print 'Current Points:\t',self.current_points
-			
-			if self.earned_points == 16:
+						
+			#--- Quit if we've done enough searches
+			if self.page_searches >= max_searches:
 				driver.quit()
 			
 			#--- Generate a random term to search for:
@@ -83,6 +97,7 @@ class account(object):
 			try:
 				#--- Enter the search term:
 				searchbar.send_keys(term,Keys.ENTER)
+				self.page_searches += 1
 				time.sleep(random.randint(25,30))
 			
 				try:
@@ -98,8 +113,6 @@ class account(object):
 		
 			except:
 				print 'Problem searching for the term'
-				
-			assert 'Bing' in driver.title
 			
 		driver.quit()
 			
