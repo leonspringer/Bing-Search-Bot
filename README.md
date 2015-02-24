@@ -3,7 +3,10 @@ Jeff Henry's Bing Search Bot V1.0
 
 Earns Rewards Points for Bing
 	
-	Last Modified: 5/19/2014
+	Last Modified: 2/24/2015
+
+	Forked from: Jeff Henry's Bing Search Bot V1.0 (https://github.com/JeffHenry/Bing-Search-Bot)
+
 	
 	This bot uses the selenium library to search for items using bing.
 	Accumulates rewards points for bing rewards.
@@ -11,6 +14,7 @@ Earns Rewards Points for Bing
 	
 	How to use:
 		- Install selenium using pip 'pip install -U selenium'
+		- Download chromedriver to working directory  -> https://sites.google.com/a/chromium.org/chromedriver/downloads
 		- Register an email with live.com and with bing rewards prior to using the bot
 		- Run and enjoy the benefits 'python bing.py'
 		
@@ -23,4 +27,7 @@ Earns Rewards Points for Bing
   	- Initial Commit
   	- Successfully accumulates 15 points in a few minutes
   	- Prints out current point count
-
+  V1.1 Updates:
+       - Handles if current weekday is tuesday of may, which means more points!
+  V1.2 Updates:
+       - Removed link clinking, switched to chromedriver in preparation for mobile search update.
