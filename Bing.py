@@ -2,7 +2,7 @@
 # -*-coding:utf-8-*-
 
 
-#	Jeff Henry's Bing Search Bot
+#	Bing Search Bot
 #	V1.0
 #	Last Modified: 2/24/2015
 #	

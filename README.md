@@ -1,4 +1,4 @@
-Jeff Henry's Bing Search Bot V1.0
+Bing Search Bot V1.0
 =============================
 
 Earns Rewards Points for Bing
@@ -27,7 +27,11 @@ Earns Rewards Points for Bing
   	- Initial Commit
   	- Successfully accumulates 15 points in a few minutes
   	- Prints out current point count
+
   V1.1 Updates:
+
        - Handles if current weekday is tuesday of may, which means more points!
-  V1.2 Updates:
+
+  V1.2 Updateos:
+
        - Removed link clinking, switched to chromedriver in preparation for mobile search update.
