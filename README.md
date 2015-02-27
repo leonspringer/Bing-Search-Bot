@@ -3,7 +3,7 @@ Bing Search Bot V1.0
 
 Earns Rewards Points for Bing
 	
-	Last Modified: 2/24/2015
+	Last Modified: 2/27/2015
 
 	Forked from: Jeff Henry's Bing Search Bot V1.0 (https://github.com/JeffHenry/Bing-Search-Bot)
 
@@ -35,3 +35,7 @@ Earns Rewards Points for Bing
   V1.2 Updateos:
 
        - Removed link clinking, switched to chromedriver in preparation for mobile search update.
+
+  V1.3 Updates:
+	   - Added the abilty to have email and password outside of file in accounts.txt
+
