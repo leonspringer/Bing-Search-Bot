@@ -3,7 +3,7 @@ Bing Search Bot V1.0
 
 Earns Rewards Points for Bing
 	
-	Last Modified: 2/27/2015
+	Last Modified: 3/12/2015
 
 	Forked from: Jeff Henry's Bing Search Bot V1.0 (https://github.com/JeffHenry/Bing-Search-Bot)
 
@@ -24,18 +24,20 @@ Earns Rewards Points for Bing
 	
   V1.0
   
-  	- Initial Commit
-  	- Successfully accumulates 15 points in a few minutes
-  	- Prints out current point count
+	- Initial Commit
+	- Successfully accumulates 15 points in a few minutes
+	- Prints out current point count
 
   V1.1 Updates:
-
-       - Handles if current weekday is tuesday of may, which means more points!
+	- Handles if current weekday is tuesday of may, which means more points!
 
   V1.2 Updateos:
-
-       - Removed link clinking, switched to chromedriver in preparation for mobile search update.
+	- Removed link clinking, switched to chromedriver in preparation for mobile search update.
 
   V1.3 Updates:
-	   - Added the abilty to have email and password outside of file in accounts.txt
+	- Added the abilty to have email and password outside of file in accounts.txt
+
+  V1.4 Updates:
+	- Added mobile search emulation! 
+	- Moved search options for future parameterization.
 
