@@ -12,6 +12,7 @@
 # Opens in a firefox window, you can see it work there.
 # 
 # How to use:
+#   - Install python
 #   - Install selenium using pip 'pip install -U selenium'
 #   - Register an email with live.com and with bing rewards prior to using the bot
 #   - Run and enjoy the benefits
@@ -61,7 +62,8 @@ class account(object):
     self.password = password
     self.current_points = 0
     self.earned_points = 0
-    self.page_searches = 0
+    self.page_searches_pc = 0
+    self.page_searches_mobile = 0
     
   def desktop(self):
     print ('Running desktop searches...')
@@ -118,7 +120,7 @@ class account(object):
       try:
         #--- Enter the search term:
         searchbar.send_keys(term,Keys.ENTER)
-        self.page_searches += 1
+        self.page_searches_pc += 1
         time.sleep(random.randint(5,35))
       
         try:
@@ -136,7 +138,7 @@ class account(object):
         print 'Problem searching for the term'
       
       #--- Quit if we've done enough searches
-      if self.page_searches >= max_searches_pc:
+      if self.page_searches_pc >= max_searches_pc:
         print "Maximum searches of " + str(max_searches_pc) + " reached, exiting.\n"
         driver.quit()
         break
@@ -200,7 +202,7 @@ class account(object):
       try:
         #--- Enter the search term:
         searchbar.send_keys(term,Keys.ENTER)
-        self.page_searches += 1
+        self.page_searches_mobile += 1
         time.sleep(random.randint(5,35))
       
         try:
@@ -218,7 +220,7 @@ class account(object):
         print 'Problem searching for the term'
       
       #--- Quit if we've done enough searches
-      if self.page_searches >= max_searches_mobile:
+      if self.page_searches_mobile >= max_searches_mobile:
         print "Maximum searches of " + str(max_searches_mobile) + " reached, exiting.\n"
         driver.quit()
         break
