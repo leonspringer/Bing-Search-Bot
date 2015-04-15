@@ -96,9 +96,11 @@ class account(object):
     repeat = True
     while(repeat):
       #--- Print current point count
-      rewards = driver.find_element_by_id('id_rc')
-      print ('Current Points: ',rewards.text)
-
+      try:
+        rewards = driver.find_element_by_id('id_rc')
+        print ('Current Points: ',rewards.text)
+      except:
+        print ('Current Points: --')
       #--- Find the search bar
       searchbar = driver.find_element_by_id('sb_form_q')
       
